@@ -20,9 +20,6 @@ handle {$PORTAL_PATH}/ttyd/* {
      uri strip_prefix {$PORTAL_PATH}/ttyd
      reverse_proxy * localhost:7681
 }
-handle @websockets-ttyd {
-        reverse_proxy * localhost:7861
-}
 # Configure AriaNg
 handle {$PORTAL_PATH}/ariang* {
         redir {$PORTAL_PATH}/ariang {$PORTAL_PATH}/ariang/         
