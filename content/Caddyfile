@@ -16,10 +16,9 @@ handle @websockets {
         reverse_proxy * localhost:56803
 }
 # Configure ttyd
-@websockets-ttyd {
-        header Connection *Upgrade*
-        header Upgrade websocket
-        path {$PORTAL_PATH}/ttyd*
+handle {$PORTAL_PATH}/ttyd/* {
+     uri strip_prefix {$PORTAL_PATH}/ttyd
+     reverse_proxy * localhost:7681
 }
 handle @websockets-ttyd {
         reverse_proxy * localhost:7861
