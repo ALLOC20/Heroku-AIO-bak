@@ -16,12 +16,12 @@ handle @websockets {
         reverse_proxy * localhost:56803
 }
 # Configure ttyd
-@websockets {
+@websockets-ttyd {
         header Connection *Upgrade*
         header Upgrade websocket
         path {$PORTAL_PATH}/ttyd*
 }
-handle @websockets {
+handle @websockets-ttyd {
         reverse_proxy * localhost:7861
 }
 # Configure AriaNg
